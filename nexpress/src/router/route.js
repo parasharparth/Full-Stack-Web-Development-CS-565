@@ -13,7 +13,7 @@ export class Route {
     const layer = new Layer("/", handler);
     layer.method = "get";
     
-    //added code for put
+    //added code for get
     this.methods["get"] = true;
     this.stack.push(layer);
     return this;
@@ -33,7 +33,7 @@ export class Route {
     const layer = new Layer("/", handler);
     layer.method = "post";
     
-    //added code for put
+    //added code for post
     this.methods["post"] = true;
     this.stack.push(layer);
     return this;
@@ -43,7 +43,7 @@ export class Route {
     const layer = new Layer("/", handler);
     layer.method = "patch";
     
-    //added code for put
+    //added code for patch
     this.methods["patch"] = true;
     this.stack.push(layer);
     return this;
@@ -53,7 +53,7 @@ export class Route {
     const layer = new Layer("/", handler);
     layer.method = "delete";
     
-    //added code for put
+    //added code for delete
     this.methods["delete"] = true;
     this.stack.push(layer);
     return this;

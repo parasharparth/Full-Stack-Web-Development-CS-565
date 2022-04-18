@@ -9,7 +9,7 @@ const app = minimal();
 
 app.use(cors());
 
-app.get("/about", (req, res) => {
+app.get("/get", (req, res) => {
   res.send("I am the about page via GET");
 });
 
@@ -25,10 +25,10 @@ app.get("/", (req, res) => {
     });
 });
 
-//My code added
-// app.put("/about", (req, res) => {
-//   res.send("I am the about page via PUT");
-// });
+ //My code added
+app.put("/put", (req, res) => {
+  res.send("I am the about page via PUT");
+});
 
 app.put("/", (req, res) => {
   fs.readFile(path.resolve(__dirname, "..", "public", "putindex.html"),
@@ -42,8 +42,8 @@ app.put("/", (req, res) => {
     });
 });
 
-app.post("/about", (req, res) => {
-  res.send("I am the about page via POST");
+app.post("/post", (req, res) => {
+  res.send("I am the post page via POST");
 });
 
 app.post("/", (req, res) => {
@@ -58,9 +58,9 @@ app.post("/", (req, res) => {
     });
 });
 
-// app.delete("/about", (req, res) => {
-//   res.send("I am the about page via DELETE");
-// });
+app.delet("/delet", (req, res) => {
+  res.send("I am the about page via delete");
+});
 
 app.delet("/", (req, res) => {
   fs.readFile(path.resolve(__dirname, "..", "public", "deleteindex.html"),
@@ -75,9 +75,9 @@ app.delet("/", (req, res) => {
 });
 
 
-// app.patch("/about", (req, res) => {
-//   res.send("I am the about page via PATCH");
-// });
+app.patch("/patch", (req, res) => {
+  res.send("I am the about page via PATCH");
+});
 
 app.patch("/", (req, res) => {
   fs.readFile(path.resolve(__dirname, "..", "public", "patchindex.html"),
@@ -93,10 +93,15 @@ app.patch("/", (req, res) => {
 
 
 
-const server = app.listen(9000, () => {
+const server = app.listen(8080, () => {
   console.log("Server is running");
 });
 
 export function addNumbersTestExample(a, b) {
   return a + b;
+}
+
+export function get1(a,b,c)
+{
+  return a+b+c;
 }
