@@ -22,6 +22,35 @@ export class Router {
     return this;
   }
 
+  //My code
+  put(path, handler) {
+    console.log("In Router.put() with path: ", path);
+    const route = this.route(path);
+    route.put(handler);
+    return this;
+  }
+
+  post(path, handler) {
+    console.log("In Router.post() with path: ", path);
+    const route = this.route(path);
+    route.post(handler);
+    return this;
+  }
+
+  delete(path, handler) {
+    console.log("In Router.delete() with path: ", path);
+    const route = this.route(path);
+    route.delete(handler);
+    return this;
+  }
+
+  patch(path, handler) {
+    console.log("In Router.patch() with path: ", path);
+    const route = this.route(path);
+    route.patch(handler);
+    return this;
+  }
+
   route(path) {
     console.log("In router.route()");
     const route = new Route(path);
