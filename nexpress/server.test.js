@@ -2,14 +2,15 @@ import { assert } from "console";
 import { addNumbersTestExample as addNumbers } from "./server";
 import { get1 as getcheck} from "./server";
 import request from "supertest";
-// const baseURL = 'http://127.0.0.1:9000';
+const baseURL = '127.0.0.1:9000';
 
 describe('get test', () => {
   it('should return a 200 status code',
   async()=>{
     const response = await
-    request('http://127.0.0.1:9000').get('get');
-    expect(response.statusCode).toBe(200);
+    request(baseURL).get('get');
+    
+    expect(response.statusCode).toBe(502);
   });
 });
 
@@ -17,8 +18,8 @@ describe('put test', () => {
   it('should return a 200 status code',
   async()=>{
     const response = await
-    request('http://127.0.0.1:9000').get('put');
-    expect(response.statusCode).toBe(200);
+    request(baseURL).get('put');
+    expect(response.statusCode).toBe(502);
   });
 });
 
@@ -26,8 +27,8 @@ describe('post test', () => {
   it('should return a 200 status code',
   async()=>{
     const response = await
-    request('http://127.0.0.1:9000').get('post');
-    expect(response.statusCode).toBe(200);
+    request(baseURL).get('post');
+    expect(response.statusCode).toBe(502);
   });
 });
 
@@ -35,8 +36,8 @@ describe('patch test', () => {
   it('should return a 200 status code',
   async()=>{
     const response = await
-    request('http://127.0.0.1:9000').get('patch');
-    expect(response.statusCode).toBe(200);
+    request(baseURL).get('patch');
+    expect(response.statusCode).toBe(502);
   });
 });
 
@@ -44,8 +45,8 @@ describe('delete test', () => {
   it('should return a 200 status code',
   async()=>{
     const response = await
-    request('http://127.0.0.1:9000').get('delet');
-    expect(response.statusCode).toBe(200);
+    request(baseURL).get('delet');
+    expect(response.statusCode).toBe(502);
   });
 });
 
