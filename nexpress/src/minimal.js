@@ -37,6 +37,34 @@ export default function Minimal() {
   // app.use("/users/admin", (req, res) => console.log)
 
 
+  //Code added for put.
+  function put(...args) {
+    console.log("Inside of Minimal.put() with args: ", args);
+    const { path, handler } = checkMiddlewareInputs(args);
+    return router.get(path, handler);
+  }
+
+  //code added for post
+  function post(...args) {
+    console.log("Inside of Minimal.post() with args: ", args);
+    const { path, handler } = checkMiddlewareInputs(args);
+    return router.get(path, handler);
+  }
+
+  //code added for delete 
+  function delet(...args) {
+    console.log("Inside of Minimal.delete() with args: ", args);
+    const { path, handler } = checkMiddlewareInputs(args);
+    return router.get(path, handler);
+  }
+
+  //code added for patch
+  function patch(...args) {
+    console.log("Inside of Minimal.patch() with args: ", args);
+    const { path, handler } = checkMiddlewareInputs(args);
+    return router.get(path, handler);
+  }
+
   function findNext(req, res) {
     let current = -1;
     const next = () => {
@@ -92,6 +120,10 @@ export default function Minimal() {
   return {
     use,
     get,
+    post,
+    put,
+    delet,
+    patch,
     listen,
   };
 }

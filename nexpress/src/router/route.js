@@ -12,8 +12,49 @@ export class Route {
   get(handler) {
     const layer = new Layer("/", handler);
     layer.method = "get";
-
+    
+    //added code for put
     this.methods["get"] = true;
+    this.stack.push(layer);
+    return this;
+  }
+
+  put(handler) {
+    const layer = new Layer("/", handler);
+    layer.method = "put";
+    
+    //added code for put
+    this.methods["put"] = true;
+    this.stack.push(layer);
+    return this;
+  }
+
+  post(handler) {
+    const layer = new Layer("/", handler);
+    layer.method = "post";
+    
+    //added code for put
+    this.methods["post"] = true;
+    this.stack.push(layer);
+    return this;
+  }
+
+  patch(handler) {
+    const layer = new Layer("/", handler);
+    layer.method = "patch";
+    
+    //added code for put
+    this.methods["patch"] = true;
+    this.stack.push(layer);
+    return this;
+  }
+
+  delete(handler) {
+    const layer = new Layer("/", handler);
+    layer.method = "delete";
+    
+    //added code for put
+    this.methods["delete"] = true;
     this.stack.push(layer);
     return this;
   }

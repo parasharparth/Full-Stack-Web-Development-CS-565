@@ -25,6 +25,74 @@ app.get("/", (req, res) => {
     });
 });
 
+//My code added
+// app.put("/about", (req, res) => {
+//   res.send("I am the about page via PUT");
+// });
+
+app.put("/", (req, res) => {
+  fs.readFile(path.resolve(__dirname, "..", "public", "putindex.html"),
+    (err, data) => {
+      if (err) {
+        console.log("Put / Errored!");
+        console.log(err);
+        return res.status(500).send("Error Occured");
+      }
+      return res.status(200).send(data);
+    });
+});
+
+app.post("/about", (req, res) => {
+  res.send("I am the about page via POST");
+});
+
+app.post("/", (req, res) => {
+  fs.readFile(path.resolve(__dirname, "..", "public", "postindex.html"),
+    (err, data) => {
+      if (err) {
+        console.log("Post / Errored!");
+        console.log(err);
+        return res.status(500).send("Error Occured");
+      }
+      return res.status(200).send(data);
+    });
+});
+
+// app.delete("/about", (req, res) => {
+//   res.send("I am the about page via DELETE");
+// });
+
+app.delet("/", (req, res) => {
+  fs.readFile(path.resolve(__dirname, "..", "public", "deleteindex.html"),
+    (err, data) => {
+      if (err) {
+        console.log("delete / Errored!");
+        console.log(err);
+        return res.status(500).send("Error Occured");
+      }
+      return res.status(200).send(data);
+    });
+});
+
+
+// app.patch("/about", (req, res) => {
+//   res.send("I am the about page via PATCH");
+// });
+
+app.patch("/", (req, res) => {
+  fs.readFile(path.resolve(__dirname, "..", "public", "patchindex.html"),
+    (err, data) => {
+      if (err) {
+        console.log("Patch / Errored!");
+        console.log(err);
+        return res.status(500).send("Error Occured");
+      }
+      return res.status(200).send(data);
+    });
+});
+
+
+
 const server = app.listen(9000, () => {
   console.log("Server is running");
 });
