@@ -41,28 +41,28 @@ export default function Minimal() {
   function put(...args) {
     console.log("Inside of Minimal.put() with args: ", args);
     const { path, handler } = checkMiddlewareInputs(args);
-    return router.get(path, handler);
+    return router.put(path, handler);
   }
 
   //code added for post
   function post(...args) {
     console.log("Inside of Minimal.post() with args: ", args);
     const { path, handler } = checkMiddlewareInputs(args);
-    return router.get(path, handler);
+    return router.post(path, handler);
   }
 
   //code added for delete 
   function delet(...args) {
     console.log("Inside of Minimal.delete() with args: ", args);
     const { path, handler } = checkMiddlewareInputs(args);
-    return router.get(path, handler);
+    return router.delete(path, handler);
   }
 
   //code added for patch
   function patch(...args) {
     console.log("Inside of Minimal.patch() with args: ", args);
     const { path, handler } = checkMiddlewareInputs(args);
-    return router.get(path, handler);
+    return router.patch(path, handler);
   }
 
   function findNext(req, res) {

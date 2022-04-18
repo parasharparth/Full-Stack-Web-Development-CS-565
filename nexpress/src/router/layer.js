@@ -17,6 +17,7 @@ export class Layer {
   requestHandler(...args) {
     const handler = this.handler;
     handler ? handler(...args) : null;
+    return handler;
   }
 
   /*
