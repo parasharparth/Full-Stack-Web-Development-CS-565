@@ -29,4 +29,4 @@ export class Layer {
   match(path) {
     return matchPath(this.path, path);
   }
-}
+} 
