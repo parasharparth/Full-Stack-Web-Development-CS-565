@@ -2,14 +2,15 @@ import { assert } from "console";
 import { addNumbersTestExample as addNumbers } from "./server";
 import { get1 as getcheck} from "./server";
 import request from "supertest";
-const baseURL = '127.0.0.1:9000';
+const baseURL = 'localhost:9000';
+// const baseURL = require('./server');
 
 describe('get test', () => {
   it('should return a 200 status code',
   async()=>{
     const response = await
     request(baseURL).get('get');
-    
+
     expect(response.statusCode).toBe(502);
   });
 });
