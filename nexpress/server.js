@@ -9,7 +9,7 @@ const app = minimal();
 
 app.use(cors());
 
-app.get("/get", (req, res) => {
+app.get("/about", (req, res) => {
   res.send("I am the about page via GET");
 });
 
@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 });
 
  //My code added
-app.put("/put", (req, res) => {
+app.put("/about", (req, res) => {
   res.send("I am the about page via PUT");
 });
 
@@ -42,7 +42,7 @@ app.put("/", (req, res) => {
     });
 });
 
-app.post("/post", (req, res) => {
+app.post("/about", (req, res) => {
   res.send("I am the post page via POST");
 });
 
@@ -58,7 +58,7 @@ app.post("/", (req, res) => {
     });
 });
 
-app.delet("/delet", (req, res) => {
+app.delet("/about", (req, res) => {
   res.send("I am the about page via delete");
 });
 
@@ -75,7 +75,7 @@ app.delet("/", (req, res) => {
 });
 
 
-app.patch("/patch", (req, res) => {
+app.patch("/about", (req, res) => {
   res.send("I am the about page via PATCH");
 });
 
