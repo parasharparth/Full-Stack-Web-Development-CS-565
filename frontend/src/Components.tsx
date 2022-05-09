@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { Profile as ProfileType } from "./types/StateTypes";
 import { Link, Outlet } from "react-router-dom";
-import { User } from "./services/UserService";
+import { User, NewProfile } from "./services/UserService";
 
 export type ProfileProps = {
   id: number,
@@ -131,6 +131,8 @@ export const Header = () => {
     &nbsp; | &nbsp;
     <Link to="/create-user">Create User</Link>
     <br />
+    <Link to="/create-new-profile">Create new profile</Link>
+    <br />
     <Outlet />
   </div>
   );
@@ -223,6 +225,103 @@ export const CreateUserForm = ({ handleInputChange, saveUser, user }) => {
       </div>
 
       <button onClick={saveUser}>
+        Create
+      </button>
+    </div>
+  )
+}
+
+
+const initialNewProfile = {
+  names: "",
+  url: "",
+};
+
+export const CreateNewProfile = () => {
+
+  const [names, setName] = useState(initialNewProfile);
+  const [url, setURL] = useState(initialNewProfile);
+  const [submitted, setSubmitted] = useState(false);
+  const [submitFailed, setSubmitFailed] = useState(false);
+
+
+  const handleInputChange = event => {
+    const { name, value } = event.target;
+    setName({ ...names, [name]: value });
+    const { url, urlvalue} = event.target;
+     setURL({ ...url, [name]: urlvalue });
+  };
+
+  const saveProfile = () => {
+    NewProfile.create(names)
+      .then(res => {
+        setSubmitted(true);
+        setSubmitFailed(false);
+        console.log(res.data);
+      })
+      .catch(e => {
+        setSubmitFailed(true);
+        console.log("Error creating new profile", e);
+      })
+  }
+
+  const resetProfile = () => {
+    setName(initialNewProfile);
+    setURL(initialNewProfile);
+    setSubmitted(false);
+  }
+
+  return (
+    <div>
+      {submitted ? (
+        <>     {/* If we've already submitted, show this piece*/}
+          <h4>You submitted successfully!</h4>
+          <button onClick={resetProfile}>
+            Reset
+          </button>
+        </>
+      ) : (
+        <>   {/* If we've NOT already submitted, show this piece*/}
+          {submitFailed && //This will only render if our prior submit failed
+            //we could add a div here and style this separately
+            <h2>profile already exists!</h2>
+          }
+          <CreateProfileForm handleInputChange={handleInputChange} saveProfile={saveProfile} user={names} />
+        </>
+      )
+      }
+    </div>
+  )
+}
+
+export const CreateProfileForm = ({ handleInputChange, saveProfile, user }) => {
+  return (
+    <div>
+      <div>
+        <label htmlFor="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          required
+          value={user.name}
+          onChange={handleInputChange}
+          name="name"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="url">URL</label>
+        <input
+          type="text"
+          id="url"
+          required
+          value={user.url}
+          onChange={handleInputChange}
+          name="url"
+        />
+      </div>
+
+      <button onClick={saveProfile}>
         Create
       </button>
     </div>

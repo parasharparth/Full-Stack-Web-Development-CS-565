@@ -21,3 +21,13 @@ export const User = db.define('users', {
 });
 
 
+
+export const NewProfile = db.define('newprofile', {
+  name: {
+    type: DataTypes.STRING,
+  },
+  url: {
+    type: DataTypes.STRING,
+  },
+});
+

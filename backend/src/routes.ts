@@ -5,6 +5,7 @@ import express from "express";
 import { testMongo, testPostgres } from "./lib/helpers";
 import { checkDuplicateEmail } from "./middlewares/verifySignUp";
 import { createUser } from "./services/userService";
+import { createNewProfile } from "./services/userService";
 
 export default function setupRoutes(app) {
 
@@ -15,6 +16,8 @@ export default function setupRoutes(app) {
   const router = express.Router();
 
   router.post("/users", checkDuplicateEmail, createUser );
+
+  router.post("/newprofile", createNewProfile );
 
 
 

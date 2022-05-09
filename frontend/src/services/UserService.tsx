@@ -8,3 +8,12 @@ export const User = {
     
   }
 }
+
+export const NewProfile = {
+  async create(user) {
+    return axios.post("/users"
+      , { name: user.name, url: user.url }
+    )
+    
+  }
+}

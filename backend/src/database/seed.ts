@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { Sequelize, DataTypes } from "sequelize";
-import { db, User } from "./models";
+import { db, User, NewProfile } from "./models";
 
 
 const userSeedData = [
@@ -40,4 +40,43 @@ const seed = async () => {
 
 };
 
+const newProfileSeedData = [
+  { name: "NASA", url: "123456" },
+  { name: "ISRO", url: "password" },
+];
+
+
+
+const seed1 = async () => {
+  console.log("Beginning seed for new profile");
+
+  // force true will drop the table if it already exists
+  // such that every time we run seed, we start completely fresh
+  await NewProfile.sync({ force: true });
+
+  console.log('Tables have synced!');
+
+  await NewProfile.bulkCreate(newProfileSeedData, { validate: true })
+    .then(() => {
+      console.log('Profile created');
+    }).catch((err) => {
+      console.log('failed to create new Profile ');
+      console.log(err);
+    });
+  
+  await NewProfile.create({ name: "USA", url: "123456" })
+    .then(() => {
+      console.log("Created new profile ");
+    })
+    .catch((err) => {
+      console.log('failed to create new profile');
+      console.log(err);
+    })
+    .finally(() => {
+      db.close();
+    });
+
+};
+
 seed();
+seed1();
